@@ -1,0 +1,13 @@
+// Контейнер для основного содержимого сайта
+.container {
+    position: relative;
+    min-height: calc(100vh - (104px + 160px));
+    padding: 0 calc(100vw - var(--width));
+
+    // Модификация контейнера, для создания колонки сайдбара
+    &.container--has-aside {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr 240px;
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "name": "multipage-website",
+    "version": "1.0.0",
+    "description": "",
+    "dependencies": {
+        "@babel/core": "^7.4.4",
+        "@babel/preset-env": "^7.4.4",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^6.1.0",
+        "gulp-babel": "^8.0.0",
+        "gulp-clean-css": "^4.2.0",
+        "gulp-pug": "^4.0.1",
+        "gulp-rename": "^1.4.0",
+        "gulp-sass": "^4.0.2",
+        "gulp-uglify": "^3.0.2",
+        "node-sass": "^4.12.0",
+        "pump": "^3.0.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "build": "gulp"
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ],
+        "plugins": []
+    },
+    "keywords": [],
+    "author": "Seasle",
+    "license": "ISC"
+}

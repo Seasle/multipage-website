@@ -1,0 +1,44 @@
+$logo-width: 48px;
+$logo-height: 48px;
+
+// Шапка сайта
+.header {
+    position: sticky;
+    top: -64px;
+    padding: 0 calc(100vw - var(--width));
+    background: #fff;
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.125);
+    z-index: 10;
+
+    // Начало шапки
+    .header__container {
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+
+        a {
+            width: $logo-width;
+            height: $logo-height;
+        }
+    }
+
+    // Меню
+    .header__menu {
+        margin: 0 -20px;
+    }
+
+    // Логотип
+    .header__logo {
+        width: $logo-width;
+        height: $logo-height;
+        user-select: none;
+    }
+
+    // Заголовок
+    .header__title {
+        margin: 0;
+        padding: 0 16px;
+        font-size: 20px;
+        font-weight: 300;
+    }
+}
