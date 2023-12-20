@@ -1,89 +1,30 @@
-const gulp = require('gulp');
-const pug = require('gulp-pug');
-const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const clean = require('gulp-clean-css');
-const babel = require('gulp-babel');
-const uglify = require('gulp-uglify');
-const rename = require('gulp-rename');
-const pump = require('pump');
+import gulp from "gulp";
+import sass from "gulp-sass";
+import postcss from "gulp-postcss";
+import esbuild from "gulp-esbuild";
+import autoprefixer from "autoprefixer";
+import postcssImport from "postcss-import";
+import postcssCsso from "postcss-csso";
+import * as dartSass from "sass";
 
-sass.compiler = require('node-sass');
+export const styles = () =>
+  gulp
+    .src("src/styles/*.scss")
+    .pipe(sass(dartSass)())
+    .pipe(postcss([postcssImport, autoprefixer, postcssCsso]))
+    .pipe(gulp.dest("dist/styles"));
 
-gulp.task('pug:build', cb => {
-    pump([
-        gulp.src(['./src/pug/**/*.pug', '!./src/pug/includes/**/*.pug']),
-        pug({
-            pretty: '\t'
-        }),
-        gulp.dest('./dist/')
-    ], cb);
-});
+export const scripts = () =>
+  gulp
+    .src("src/scripts/*.js")
+    .pipe(esbuild({ minify: true, sourcemap: true }))
+    .pipe(gulp.dest("dist/scripts"));
 
-gulp.task('sass:build', cb => {
-    pump([
-        gulp.src('./src/sass/*.scss'),
-        sass({
-            indentWidth: 4,
-            outputStyle: 'expanded'
-        })
-            .on('error', sass.logError),
-        autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }),
-        gulp.dest('./dist/Styles/')
-    ], cb);
-});
+export const watch = () => {
+  gulp.watch("src/styles/**/*.scss", gulp.series(styles));
+  gulp.watch("src/scripts/**/*.js", gulp.series(scripts));
+};
 
-gulp.task('js:build', cb => {
-    pump([
-        gulp.src('./src/js/*.js'),
-        babel({
+export const dev = gulp.series(gulp.parallel(styles, scripts), watch);
 
-        }),
-        gulp.dest('./dist/Scripts/')
-    ], cb);
-});
-
-gulp.task('sass:minify', cb => {
-    pump([
-        gulp.src(['./dist/Styles/**/*.css', '!./dist/Styles/**/*.min.css']),
-        clean(),
-        rename({
-            suffix: '.min'
-        }),
-        gulp.dest('./dist/Styles/')
-    ], cb);
-});
-
-gulp.task('js:minify', cb => {
-    pump([
-        gulp.src(['./dist/Scripts/**/*.js', '!./dist/Scripts/**/*.min.js']),
-        uglify(),
-        rename({
-            suffix: '.min'
-        }),
-        gulp.dest('./dist/Scripts/')
-    ], cb);
-});
-
-gulp.task('pug:watch', cb => {
-    gulp.watch('./src/pug/**/*.pug', gulp.series('pug:build'))
-});
-
-gulp.task('sass:watch', cb => {
-    gulp.watch('./src/sass/**/*.scss', gulp.series('sass:build', 'sass:minify'))
-});
-
-gulp.task('js:watch', cb => {
-    gulp.watch('./src/js/**/*.js', gulp.series('js:build', 'js:minify'))
-});
-
-gulp.task('build', gulp.parallel('pug:build', 'sass:build', 'js:build'));
-
-gulp.task('minify', gulp.parallel('sass:minify', 'js:minify'));
-
-gulp.task('watch', gulp.parallel('pug:watch', 'sass:watch', 'js:watch'));
-
-gulp.task('default', gulp.series('build', 'minify', 'watch'));
+export const build = gulp.series(gulp.parallel(styles, scripts));

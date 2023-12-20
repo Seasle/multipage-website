@@ -1,32 +1,31 @@
 {
-    "name": "multipage-website",
-    "version": "1.0.0",
-    "description": "",
-    "dependencies": {
-        "@babel/core": "^7.4.4",
-        "@babel/preset-env": "^7.4.4",
-        "gulp": "^4.0.2",
-        "gulp-autoprefixer": "^6.1.0",
-        "gulp-babel": "^8.0.0",
-        "gulp-clean-css": "^4.2.0",
-        "gulp-pug": "^4.0.1",
-        "gulp-rename": "^1.4.0",
-        "gulp-sass": "^4.0.2",
-        "gulp-uglify": "^3.0.2",
-        "node-sass": "^4.12.0",
-        "pump": "^3.0.0"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "build": "gulp"
-    },
-    "babel": {
-        "presets": [
-            "@babel/preset-env"
-        ],
-        "plugins": []
-    },
-    "keywords": [],
-    "author": "Seasle",
-    "license": "ISC"
+  "name": "multipage-website",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently npm:dev:*",
+    "dev:gulp": "npx gulp dev",
+    "dev:eleventy": "npx @11ty/eleventy --config=eleventy.config.сjs --serve",
+    "build": "npm run clear && concurrently npm:build:*",
+    "build:gulp": "npx gulp build",
+    "build:eleventy": "npx @11ty/eleventy --config=eleventy.config.сjs",
+    "clear": "del-cli dist -f"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "^5.0.8"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "del-cli": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-esbuild": "^0.12.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "postcss-csso": "^6.0.1",
+    "postcss-import": "^15.1.0",
+    "sass": "^1.69.5"
+  }
 }

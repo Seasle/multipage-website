@@ -1,0 +1,30 @@
+@import "@fontsource/roboto/latin.css";
+@import "@fontsource/roboto/cyrillic.css";
+
+:root {
+  --width: 90%;
+  --font-family: "Roboto", "Segoe UI", Arial, Helvetica, sans-serif;
+  --primary-color: #009245;
+}
+
+body {
+  margin: 0;
+  font: 16px var(--font-family);
+}
+
+@import "includes/menu.scss";
+@import "includes/page-up.scss";
+
+@import "includes/header.scss";
+@import "includes/footer.scss";
+@import "includes/sidebar.scss";
+
+@import "includes/hero.scss";
+@import "includes/container.scss";
+@import "includes/content.scss";
+
+// @media screen and (max-width: 1280px) {
+//     :root {
+//         --width: 1000px;
+//     }
+// }

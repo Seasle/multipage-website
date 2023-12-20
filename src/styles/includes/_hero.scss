@@ -1,0 +1,18 @@
+// Блок на главной странице
+.hero {
+  height: 480px;
+  padding: 60px calc(100vw - var(--width));
+  box-sizing: border-box;
+  display: flex;
+  background: url(/assets/images/hero.jpg) center/cover no-repeat;
+  background-attachment: fixed;
+
+  // Заголовок
+  .hero__title {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.8);
+  }
+}
