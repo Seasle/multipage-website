@@ -2,49 +2,49 @@ $text-indent: 32px;
 
 // Текстовый контент
 .content {
-    .content__title,
-    .content__subtitle {
-        margin: 0;
-        font-weight: 400;
+  .content__title,
+  .content__subtitle {
+    margin: 0;
+    font-weight: 400;
+  }
+
+  // Заголовок
+  .content__title {
+    padding: 20px $text-indent;
+    font-size: 24px;
+
+    // Класс для оцентровки
+    &.content__title--center {
+      text-align: center;
     }
+  }
 
-    // Заголовок
-    .content__title {
-        padding: 20px $text-indent;
-        font-size: 24px;
+  // Подзаголовок
+  .content__subtitle {
+    padding: 10px $text-indent;
+    font-size: 20px;
 
-        // Класс для оцентровки
-        &.content__title--center {
-            text-align: center;
-        }
+    // Класс для оцентровки
+    &.content__subtitle--center {
+      text-align: center;
     }
+  }
 
-    // Подзаголовок
-    .content__subtitle {
-        padding: 10px $text-indent;
-        font-size: 20px;
+  // Параграф текста
+  .content__text {
+    margin: 0;
+    padding: 10px 0;
+    line-height: 1.5;
+    text-indent: $text-indent;
+    text-align: justify;
+  }
 
-        // Класс для оцентровки
-        &.content__subtitle--center {
-            text-align: center;
-        }
-    }
-
-    // Параграф текста
-    .content__text {
-        margin: 0;
-        padding: 10px 0;
-        line-height: 1.5;
-        text-indent: $text-indent;
-        text-align: justify;
-    }
-
-    // Изображение в тексте
-    .content__image {
-        width: 100%;
-        max-width: 360px;
-        float: right;
-        margin: 10px 0 10px 10px;
-        clip-path: inset(0 round 5px);
-    }
+  // Изображение в тексте
+  .content__image {
+    width: 100%;
+    max-width: 360px;
+    float: right;
+    margin: 10px 0 10px 10px;
+    clip-path: inset(0 round 5px);
+  }
 }

@@ -1,20 +1,18 @@
-import { onReady } from "./utils.js";
+import { onReady } from './utils.js';
 
-const disableIncorrectNavLinks = () => {
+onReady(() => () => {
   const expression = /\#/g;
-  const navs = document.querySelectorAll("nav");
+  const navs = document.querySelectorAll('nav');
 
   navs.forEach((nav) => {
-    const links = nav.querySelectorAll("a");
+    const links = nav.querySelectorAll('a');
 
     links.forEach((link) => {
       if (expression.test(link.href)) {
-        link.addEventListener("click", (event) => {
+        link.addEventListener('click', (event) => {
           event.preventDefault();
         });
       }
     });
   });
-};
-
-onReady(() => disableIncorrectNavLinks());
+});

@@ -1,26 +1,26 @@
-import { onReady } from "./utils.js";
+import { onReady } from './utils.js';
 
 onReady(() => {
-  const pageUp = Object.assign(document.createElement("div"), {
-    className: "page-up page-up--hidden",
+  const pageUp = Object.assign(document.createElement('div'), {
+    className: 'page-up page-up--hidden',
   });
 
-  pageUp.addEventListener("click", (event) => {
+  pageUp.addEventListener('click', (event) => {
     event.preventDefault();
 
     scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
 
     pageUp.blur();
   });
 
-  window.addEventListener("scroll", (event) => {
+  window.addEventListener('scroll', (event) => {
     if (scrollY > innerHeight / 2) {
-      pageUp.classList.remove("page-up--hidden");
+      pageUp.classList.remove('page-up--hidden');
     } else {
-      pageUp.classList.add("page-up--hidden");
+      pageUp.classList.add('page-up--hidden');
     }
   });
 

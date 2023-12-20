@@ -10,9 +10,12 @@ $duration: 0.25s;
   padding: 10px;
   border: none;
   border-radius: 50%;
-  background: url(/assets/images/up-chevron.svg) 50% 40%/50% no-repeat,
+  background:
+    url(/assets/images/up-chevron.svg) 50% 40%/50% no-repeat,
     var(--primary-color);
-  transition: opacity $duration ease-in-out, visibility $duration ease-in-out;
+  transition:
+    opacity $duration ease-in-out,
+    visibility $duration ease-in-out;
 
   // Скрытое состояние виджета
   &.page-up--hidden {

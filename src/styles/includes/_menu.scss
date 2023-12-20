@@ -20,7 +20,7 @@
         height: 8px;
         background: url(/assets/images/down-chevron.svg) center no-repeat;
         transform: translate(-2px, 2px);
-        content: "";
+        content: '';
       }
 
       &:hover,
@@ -56,7 +56,8 @@
     display: none;
     flex-direction: column;
     background: #fff;
-    box-shadow: inset 0 2px 0 0 var(--primary-color),
+    box-shadow:
+      inset 0 2px 0 0 var(--primary-color),
       0 4px 16px -4px rgba(0, 0, 0, 0.125);
     visibility: hidden;
   }

@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "concurrently npm:dev:*",
     "dev:gulp": "npx gulp dev",
-    "dev:eleventy": "npx @11ty/eleventy --config=eleventy.config.сjs --serve",
+    "dev:eleventy": "npx @11ty/eleventy --serve",
     "build": "npm run clear && concurrently npm:build:*",
     "build:gulp": "npx gulp build",
-    "build:eleventy": "npx @11ty/eleventy --config=eleventy.config.сjs",
-    "clear": "del-cli dist -f"
+    "build:eleventy": "npx @11ty/eleventy",
+    "clear": "del-cli dist -f",
+    "format": "prettier --write \"**/*.{scss,js,cjs,md,json}\""
   },
   "dependencies": {
     "@fontsource/roboto": "^5.0.8"
@@ -26,6 +27,7 @@
     "gulp-sass": "^5.1.0",
     "postcss-csso": "^6.0.1",
     "postcss-import": "^15.1.0",
+    "prettier": "^3.1.1",
     "sass": "^1.69.5"
   }
 }
