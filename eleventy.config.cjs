@@ -1,9 +1,13 @@
+const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
+
 /** @param {import("@11ty/eleventy").UserConfig} config */
 module.exports = (config) => {
-  config.addGlobalData(
-    'base',
-    process.env.NODE_ENV === 'production' ? '/multipage-website/' : '/',
-  );
+  const prefix =
+    process.env.NODE_ENV === 'production' ? '/multipage-website/' : '/';
+
+  config.addPlugin(EleventyHtmlBasePlugin, {
+    baseHref: prefix,
+  });
 
   config.addPassthroughCopy({
     'node_modules/@fontsource/roboto/files': 'styles/files',
